@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <!--  fuente cairo - Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;500&display=swap" rel="stylesheet">
+
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+ 
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="./asset/Logo.svg" alt="A de alura">
+        <h1>Encriptador de mensajes</h1>
+    </header>
+
+    <section class="text-area">
+        <div class="campo-1">
+            <!-- campo para ingresar el texto -->
+            <textarea class="mensaje" name="mensaje" id="mensaje" cols="30" rows="10"
+                placeholder="Ingrese el texto aqui"></textarea>
+            <!--  botones funciones encriptar y desencriptar -->
+            <div class="botones-des-enc">
+                <button type="submit" class="btn-primario btn">Encriptar</button>
+                <button type="submit" class="btn-secundario btn">Desencriptar</button>
+            </div>
+
+            <div class="descripcion">
+                <img src="./asset/ciudadano.png" alt="niña">
+                <h5>Diseñado por Mariel Torres </h5>
+            </div>
+
+            <div class="redes">
+                <a href="https://www.linkedin.com/in/mariel-torres-front-end/">Linkedin: Mariel-Torres</a>
+            </div>
+
+
+        </div>
+        <div class="campo-2">
+            <!--  campo para mostrar el texto desencriptado -->
+            <p class="mensje-mostrar"></p>
+            <div class="texto-desencriptado">
+                <!-- mensaje de texto no encontrado -->
+                <div class="mensaje-descriptivo">
+                    <img src="./asset/ghost-lupita.svg" alt="">
+                    <img src="./asset/ghost.svg" alt="">
+                    <h2>Ningun mensaje encontrado</h2>
+                    <h3>Aca otro texto que no me acuerdo</h3>
+                </div>
+            </div>
+            <!-- boton copiado de texto -->
+            <button class="boton-copiar">Copiar</button>
+        </div>
+
+    </section>
+
+</body>
+</html>
