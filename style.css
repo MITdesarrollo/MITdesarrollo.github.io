@@ -122,6 +122,9 @@ align-items: center;
   /* ghost-svg */
   position: relative;
 }
+p{
+  text-align: center;
+}
 .campo-2 img{
     position: absolute;
 }
