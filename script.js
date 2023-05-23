@@ -74,12 +74,22 @@ function desencriptador() {
 botonCopiar.addEventListener("click", () => {
   const campoResultado = document.querySelector(".mensje-mostrar");
   const texto = campoResultado.textContent;
-  Swal.fire({
-    position: 'bottom-start',
-    icon: 'success',
-    title: 'mensaje copiado',
-    showConfirmButton: false,
-    timer: 1500,
-    toast: true
-  })
+
+  navigator.clipboard.writeText(texto)
+    .then(() => {
+      console.log("Texto copiado al portapapeles: ", texto);
+      // Aquí puedes agregar cualquier otra lógica que desees realizar después de copiar el texto
+    })
+    .catch((error) => {
+      console.error("Error al copiar el texto: ", error);
+      // Aquí puedes manejar el error o agregar cualquier otra lógica de manejo de errores
+    });
+    Swal.fire({
+      position: 'bottom-start',
+      icon: 'success',
+      title: 'mensaje copiado',
+      showConfirmButton: false,
+      timer: 1500,
+      toast: true
+    })
 });
