@@ -16,12 +16,10 @@ function encriptador(e) {
     mensajeDescriptivo
     return;
   }
-  
-  if (!/^[a-z]+$/.test(mensaje)) {
+  /* if (!/^[a-z]+$/.test(mensaje)) {
     mensajeDescriptivo.innerHTML= "El mensaje solo puede contener letras minúsculas y sin caracteres especiales"
     return;
-  }
-
+  } */
   for (let i = 0; i < mensaje.length; i++) {
     let caracter = mensaje[i];
 
