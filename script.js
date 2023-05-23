@@ -12,6 +12,16 @@ function encriptador(e) {
   let mensaje = textArea.value;
   let mensajeEncriptado = "";
 
+  if (mensaje.trim() === "") {
+    mensajeDescriptivo
+    return;
+  }
+  
+  if (!/^[a-z]+$/.test(mensaje)) {
+    mensajeDescriptivo.innerHTML= "El mensaje solo puede contener letras minúsculas y sin caracteres especiales"
+    return;
+  }
+
   for (let i = 0; i < mensaje.length; i++) {
     let caracter = mensaje[i];
 
@@ -48,6 +58,14 @@ function encriptador(e) {
 }
 
 function desencriptador() {
+
+  let mensajeEncriptado = textArea.value;
+
+  if (mensajeEncriptado.trim() === "") {
+    mensajeDescriptivo
+    return;
+  }
+
   let palabras = {
     enter: "e",
     imes: "i",
@@ -56,7 +74,7 @@ function desencriptador() {
     ufat: "u",
   };
 
-  let mensajeEncriptado = textArea.value;
+  let mensajeEncriptadoo = textArea.value;
   let palabras_desencriptadas = mensajeEncriptado
     .split(/(enter|imes|ai|ober|ufat)/g)
     .map(function (palabra) {
