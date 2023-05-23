@@ -1,3 +1,5 @@
+/* Elementos del DOM */
+
 const textArea = document.querySelector(".mensaje");
 const encriptar = document.querySelector(".btn-primario");
 const desencriptar = document.querySelector(".btn-secundario");
@@ -5,21 +7,21 @@ const mensajeDescriptivo = document.querySelector(".mensaje-descriptivo");
 const campoResultado = document.querySelector(".mensje-mostrar");
 const botonCopiar = document.querySelector(".boton-copiar");
 
-encriptar.addEventListener("click", encriptador);
-desencriptar.addEventListener("click", desencriptador);
 
-function encriptador(e) {
+function encriptador(){
+
   let mensaje = textArea.value;
   let mensajeEncriptado = "";
 
   if (mensaje.trim() === "") {
     mensajeDescriptivo
     return;
-  }
-  /* if (!/^[a-z]+$/.test(mensaje)) {
-    mensajeDescriptivo.innerHTML= "El mensaje solo puede contener letras minúsculas y sin caracteres especiales"
+  } else if (!/^[a-z\s]+$/.test(mensaje)) {
+    campoResultado.innerHTML = "";
+    mensajeDescriptivo.innerHTML = "El mensaje solo puede contener letras minúsculas y sin caracteres especiales"
     return;
-  } */
+  }
+
   for (let i = 0; i < mensaje.length; i++) {
     let caracter = mensaje[i];
 
@@ -72,40 +74,43 @@ function desencriptador() {
     ufat: "u",
   };
 
-  let mensajeEncriptadoo = textArea.value;
   let palabras_desencriptadas = mensajeEncriptado
     .split(/(enter|imes|ai|ober|ufat)/g)
     .map(function (palabra) {
       return palabras.hasOwnProperty(palabra) ? palabras[palabra] : palabra;
     });
-
+ 
   let mensajeDesencriptado = palabras_desencriptadas.join("");
-  textArea.value = mensajeDesencriptado;
   campoResultado.textContent = mensajeDesencriptado;
   textArea.value = "";
 
   mensajeDescriptivo.innerHTML = "";
 }
 
-botonCopiar.addEventListener("click", () => {
+function copiarTexto() {
+
   const campoResultado = document.querySelector(".mensje-mostrar");
   const texto = campoResultado.textContent;
 
   navigator.clipboard.writeText(texto)
     .then(() => {
-      console.log("Texto copiado al portapapeles: ", texto);
-      // Aquí puedes agregar cualquier otra lógica que desees realizar después de copiar el texto
+      swalAlert('success', 'mensaje copiado')
     })
     .catch((error) => {
-      console.error("Error al copiar el texto: ", error);
-      // Aquí puedes manejar el error o agregar cualquier otra lógica de manejo de errores
+      swalAlert('error', 'mensaje no copiado')
     });
-    Swal.fire({
-      position: 'bottom-start',
-      icon: 'success',
-      title: 'mensaje copiado',
-      showConfirmButton: false,
-      timer: 1500,
-      toast: true
-    })
-});
+};
+
+function swalAlert(icon, title){
+return Swal.fire({
+  position: 'bottom-start',
+  icon : icon,
+  title : title,
+  showConfirmButton: false,
+  timer: 1500,
+  toast: true
+})
+}
+encriptar.addEventListener("click", encriptador);
+desencriptar.addEventListener("click", desencriptador);
+botonCopiar.addEventListener("click", copiarTexto);
